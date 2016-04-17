@@ -2,20 +2,37 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <iterator>
+#include <stdlib.h>
+
 using namespace std;
 void bywords(int n);
-
+int find(int n,int k=1)
+{
+	
+	
+	bool _isCorrect=true;
+	unsigned long long result=n*k;
+	while(result)
+	{
+		if((result)%10>1)_isCorrect=false;
+		result/=10;
+		
+	}
+	if(_isCorrect)return k;
+		else find(n,++k);
+	
+}
 
 
 
 int main(int argc, char *argv[])
 {
 	printf("podaj liczbe od 0 do milion\n");
-	long int n;
-	scanf("%d",&n);
-	bywords(n);
+	int n=atoi(argv[1]);
+	bywords(find(n));
 }
+
+
 void bywords(int n)
 {
 	std::string jednosci[]={"jeden","dwa","trzy","cztery","piec","szesc","siedem","osiem","dziewiec"};
